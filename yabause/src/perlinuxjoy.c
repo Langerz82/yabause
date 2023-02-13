@@ -363,6 +363,7 @@ static void LinuxJoyHandleEvents(perlinuxjoy_struct * joystick)
       if (evt.value != 0)
       {
          if ((key & 0x1FFFF) != 0x1FFFF) PerKeyDown(key);
+         if ((key & 0x1FFFF) != 0x1FFFF) PerKeyDown(0x10000 | key);
       }
       else
       {
@@ -397,16 +398,9 @@ static int LinuxJoyScan(perlinuxjoy_struct * joystick)
       else evt.value = 1;
    }
    key = PACKEVENT(evt, joystick);
-   if (evt.value != 0)
-   {
-      if ((key & 0x1FFFF) != 0x1FFFF) PerKeyDown(key);
-   }
-   else
-   {
-      if ((key & 0x1FFFF) != 0x1FFFF) PerKeyUp(key);
-      if ((key & 0x1FFFF) != 0x1FFFF) PerKeyUp(0x10000 | key);
-   }
-   return key;
+   if ((key & 0x1FFFF) != 0x1FFFF)
+      return key;
+   else return 0;
 }
 
 static void LinuxJoyFlush(perlinuxjoy_struct * joystick)
