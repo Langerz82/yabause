@@ -356,8 +356,10 @@ static void LinuxJoyHandleEvents(perlinuxjoy_struct * joystick)
          initvalue = joystick->axis[axis];
          disp = abs(initvalue - evt.value);
          if (disp < THRESHOLD) evt.value = 0;
-         else if (evt.value < initvalue) evt.value = -1;
-         else evt.value = 1;
+         if (evt.value != 0) {
+           if (evt.value < initvalue) evt.value = -1;
+           else evt.value = 1;
+         }
       }
       key = PACKEVENT(evt, joystick);
       if (evt.value != 0)
@@ -392,9 +394,10 @@ static int LinuxJoyScan(perlinuxjoy_struct * joystick)
 
       initvalue = joystick->axis[axis];
       disp = abs(initvalue - evt.value);
-      if (disp < THRESHOLD) return 0;
-      else if (evt.value < initvalue) evt.value = -1;
-      else evt.value = 1;
+      if (disp >= THRESHOLD) {
+        if (evt.value < initvalue) evt.value = -1;
+        else evt.value = 1;
+      }
    }
    key = PACKEVENT(evt, joystick);
    if ((key & 0x1FFFF) != 0x1FFFF)
