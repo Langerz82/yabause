@@ -363,7 +363,6 @@ static void LinuxJoyHandleEvents(perlinuxjoy_struct * joystick)
       if (evt.value != 0)
       {
          if ((key & 0x1FFFF) != 0x1FFFF) PerKeyDown(key);
-         if ((key & 0x1FFFF) != 0x1FFFF) PerKeyDown(0x10000 | key);
       }
       else
       {

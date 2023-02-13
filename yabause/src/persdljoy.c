@@ -316,8 +316,8 @@ u32 PERSDLJoyScan( u32 flags ) {
 			}
 		}
 
-		if (flags & PERSF_BUTTON)
-		{
+		//if (flags & PERSF_BUTTON)
+		//{
 			// check buttons
 			for ( i = 0; i < SDL_JoystickNumButtons( joy ); i++ )
 			{
@@ -327,10 +327,10 @@ u32 PERSDLJoyScan( u32 flags ) {
 					break;
 				}
 			}
-		}
+		//}
 
-		if (flags & PERSF_HAT)
-		{
+		//if (flags & PERSF_HAT)
+		//{
 			// check hats
 			for ( i = 0; i < SDL_JoystickNumHats( joy ); i++ )
 			{
@@ -347,7 +347,7 @@ u32 PERSDLJoyScan( u32 flags ) {
 						break;
 				}
 			}
-		}
+		//}
 	}
 
 	return 0;
