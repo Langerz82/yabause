@@ -818,6 +818,7 @@ void PerKeyDown(u32 key)
 			if (perkeyconfig[i].base->Press) {
 				perkeyconfig[i].base->Press(perkeyconfig[i].controller);
 				printf("PerKeyDown - pressed: %d", key);
+			}
 		}
 		i++;
 	}
