@@ -857,8 +857,6 @@ void FASTCALL SmpcWriteByte(u32 addr, u8 val) {
                            SmpcRegs->PDR[0] = 0x7C;
                            break;
                         case PER3DPAD:
-                           SmpcRegs->PDR[0] = 0x7C;
-                           break;                        
                         case PERKEYBOARD:
                            SmpcRegs->PDR[0] = 0x71;
                            break;
