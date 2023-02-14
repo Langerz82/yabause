@@ -870,13 +870,13 @@ int InputManager::handleJoyEvents(void) {
       {
         PerKeyUp( (joyId << 18) | SDL_MAX_AXIS_VALUE | i );
         PerKeyDown( (joyId << 18) | SDL_MIN_AXIS_VALUE | i );
-        printf("PerAxisValue %d, %d\n",i,((u8)(((int)cur+32768) >> 8)));
+        //printf("PerAxisValue %d, %d\n",i,((u8)(((int)cur+32768) >> 8)));
       }
       else if ( cur > SDL_MEDIUM_AXIS_VALUE )
       {
         PerKeyUp( (joyId << 18) | SDL_MIN_AXIS_VALUE | i );
         PerKeyDown( (joyId << 18) | SDL_MAX_AXIS_VALUE | i );
-        printf("PerAxisValue %d, %d\n",i,((u8)(((int)cur+32768) >> 8)));
+        //printf("PerAxisValue %d, %d\n",i,((u8)(((int)cur+32768) >> 8)));
       }
       else
       {
@@ -899,7 +899,7 @@ int InputManager::handleJoyEvents(void) {
       else if ( buttonState == SDL_BUTTON_RELEASED )
       {
         PerKeyUp( (joyId << 18) | (i) );
-        printf("SDL_BUTTON_RELEASED %d\n",(i +1));
+        //printf("SDL_BUTTON_RELEASED %d\n",(i +1));
       }
     }
 
