@@ -326,7 +326,7 @@ u32 PERSDLJoyScan( u32 flags ) {
 			{
 				if ( SDL_JoystickGetButton( joy, i ) == SDL_BUTTON_PRESSED )
 				{
-          printf("PERSDLJoyScan: %d - down.", (i+1));
+          printf("PERSDLJoyScan: %d - down.\n", (i+1));
 					return (joyId << 18) | (i +1);
 					break;
 				}
@@ -345,7 +345,7 @@ u32 PERSDLJoyScan( u32 flags ) {
 					case SDL_HAT_RIGHT:
 					case SDL_HAT_DOWN:
 					case SDL_HAT_LEFT:
-            printf("PERSDLJoyScan: hat %d - down.", (i));
+            printf("PERSDLJoyScan: hat %d - down.\n", (i));
 						return (joyId << 18) | SDL_HAT_VALUE | (hatState << 4) | i;
 						break;
 					default:

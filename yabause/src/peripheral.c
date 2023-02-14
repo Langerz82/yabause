@@ -811,13 +811,13 @@ void PerKeyDown(u32 key)
 
 	while(i < perkeyconfigsize)
 	{
-		printf("PerKeyDown - test: %d, %d", key, perkeyconfig[i].key);
+		//printf("PerKeyDown - test: %d, %d", key, perkeyconfig[i].key);
 		if (key == perkeyconfig[i].key)
 		{
-			printf("PerKeyDown - base press check");
+			//printf("PerKeyDown - base press check");
 			if (perkeyconfig[i].base->Press) {
 				perkeyconfig[i].base->Press(perkeyconfig[i].controller);
-				printf("PerKeyDown - pressed: %d", key);
+				printf("PerKeyDown - pressed: %d\n", key);
 			}
 		}
 		i++;
