@@ -363,6 +363,7 @@ static void LinuxJoyHandleEvents(perlinuxjoy_struct * joystick)
       if (evt.value != 0)
       {
          if ((key & 0x1FFFF) != 0x1FFFF) PerKeyDown(key);
+         printf("LinuxJoyHandleEvents - PerKeyDown: %d",key);
       }
       else
       {
@@ -397,8 +398,10 @@ static int LinuxJoyScan(perlinuxjoy_struct * joystick)
       else evt.value = 1;
    }
    key = PACKEVENT(evt, joystick);
-   if ((key & 0x1FFFF) != 0x1FFFF)
+   if ((key & 0x1FFFF) != 0x1FFFF) {
+     printf("LinuxJoyScan - PACKEVENT: %d",key);
       return key;
+   }
    else return 0;
 }
 

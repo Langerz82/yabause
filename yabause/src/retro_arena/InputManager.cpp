@@ -894,7 +894,7 @@ int InputManager::handleJoyEvents(void) {
       if ( buttonState == SDL_BUTTON_PRESSED )
       {
         PerKeyDown( (joyId << 18) | (i) );
-        printf("SDL_BUTTON_PRESSED %d",(i));
+        printf("SDL_BUTTON_PRESSED %d\n",(i));
       }
       else if ( buttonState == SDL_BUTTON_RELEASED )
       {
