@@ -213,7 +213,7 @@ void PerPadLeftReleased(PerPad_struct * pad) {
 //////////////////////////////////////////////////////////////////////////////
 
 void PerPadStartPressed(PerPad_struct * pad) {
-	 print("PerPadStartPressed.");
+	 printf("PerPadStartPressed.\n");
    *pad->padbits &= 0xF7;
    SMPCLOG("Start\n");
 }
