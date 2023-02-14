@@ -163,6 +163,7 @@ void PerDeInit(void) {
 void PerPadUpPressed(PerPad_struct * pad) {
    *pad->padbits &= 0xEF;
    SMPCLOG("Up\n");
+	 printf("pad up pressed: %x", *pad->padbits);
 }
 
 //////////////////////////////////////////////////////////////////////////////
@@ -176,6 +177,7 @@ void PerPadUpReleased(PerPad_struct * pad) {
 void PerPadDownPressed(PerPad_struct * pad) {
    *pad->padbits &= 0xDF;
    SMPCLOG("Down\n");
+	 printf("pad down pressed: %x", *pad->padbits);
 }
 
 //////////////////////////////////////////////////////////////////////////////
@@ -189,6 +191,7 @@ void PerPadDownReleased(PerPad_struct * pad) {
 void PerPadRightPressed(PerPad_struct * pad) {
    *pad->padbits &= 0x7F;
    SMPCLOG("Right\n");
+	 printf("pad right pressed: %x", *pad->padbits);
 }
 
 //////////////////////////////////////////////////////////////////////////////
@@ -202,6 +205,7 @@ void PerPadRightReleased(PerPad_struct * pad) {
 void PerPadLeftPressed(PerPad_struct * pad) {
    *pad->padbits &= 0xBF;
    SMPCLOG("Left\n");
+	 printf("pad left pressed: %x", *pad->padbits);
 }
 
 //////////////////////////////////////////////////////////////////////////////
@@ -213,9 +217,9 @@ void PerPadLeftReleased(PerPad_struct * pad) {
 //////////////////////////////////////////////////////////////////////////////
 
 void PerPadStartPressed(PerPad_struct * pad) {
-	 printf("PerPadStartPressed.\n");
    *pad->padbits &= 0xF7;
    SMPCLOG("Start\n");
+	 printf("pad start pressed: %x", *pad->padbits);
 }
 
 //////////////////////////////////////////////////////////////////////////////
@@ -229,6 +233,7 @@ void PerPadStartReleased(PerPad_struct * pad) {
 void PerPadAPressed(PerPad_struct * pad) {
    *pad->padbits &= 0xFB;
    SMPCLOG("A\n");
+	 printf("pad A pressed: %x", *pad->padbits);
 }
 
 //////////////////////////////////////////////////////////////////////////////
@@ -242,6 +247,7 @@ void PerPadAReleased(PerPad_struct * pad) {
 void PerPadBPressed(PerPad_struct * pad) {
    *pad->padbits &= 0xFE;
    SMPCLOG("B\n");
+	 printf("pad B pressed: %x", *pad->padbits);
 }
 
 //////////////////////////////////////////////////////////////////////////////
@@ -255,6 +261,7 @@ void PerPadBReleased(PerPad_struct * pad) {
 void PerPadCPressed(PerPad_struct * pad) {
    *pad->padbits &= 0xFD;
    SMPCLOG("C\n");
+	 printf("pad C pressed: %x", *pad->padbits);
 }
 
 //////////////////////////////////////////////////////////////////////////////
@@ -268,6 +275,7 @@ void PerPadCReleased(PerPad_struct * pad) {
 void PerPadXPressed(PerPad_struct * pad) {
    *(pad->padbits + 1) &= 0xBF;
    SMPCLOG("X\n");
+	 printf("pad X pressed: %x", *pad->padbits);
 }
 
 //////////////////////////////////////////////////////////////////////////////
@@ -281,6 +289,7 @@ void PerPadXReleased(PerPad_struct * pad) {
 void PerPadYPressed(PerPad_struct * pad) {
    *(pad->padbits + 1) &= 0xDF;
    SMPCLOG("Y\n");
+	 printf("pad Y pressed: %x", *pad->padbits);
 }
 
 //////////////////////////////////////////////////////////////////////////////
@@ -294,6 +303,7 @@ void PerPadYReleased(PerPad_struct * pad) {
 void PerPadZPressed(PerPad_struct * pad) {
    *(pad->padbits + 1) &= 0xEF;
    SMPCLOG("Z\n");
+	 printf("pad Z pressed: %x", *pad->padbits);
 }
 
 //////////////////////////////////////////////////////////////////////////////
@@ -307,6 +317,7 @@ void PerPadZReleased(PerPad_struct * pad) {
 void PerPadRTriggerPressed(PerPad_struct * pad) {
    *(pad->padbits + 1) &= 0x7F;
    SMPCLOG("Right Trigger\n");
+	 printf("pad RT pressed: %x", *pad->padbits);
 }
 
 //////////////////////////////////////////////////////////////////////////////
@@ -320,6 +331,7 @@ void PerPadRTriggerReleased(PerPad_struct * pad) {
 void PerPadLTriggerPressed(PerPad_struct * pad) {
    *(pad->padbits + 1) &= 0xF7;
    SMPCLOG("Left Trigger\n");
+	 printf("pad LT pressed: %x", *pad->padbits);
 }
 
 //////////////////////////////////////////////////////////////////////////////
