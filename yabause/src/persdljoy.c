@@ -225,11 +225,14 @@ int PERSDLJoyHandleEvents(void) {
 			if ( buttonState == SDL_BUTTON_PRESSED )
 			{
 				PerKeyDown( (joyId << 18) | (i +1) );
+        printf("PERSDLJoyHandleEvents: %d - down.", (i+1));
 			}
 			else if ( buttonState == SDL_BUTTON_RELEASED )
 			{
 				PerKeyUp( (joyId << 18) | (i +1) );
+        printf("PERSDLJoyHandleEvents: %d - up.", (i+1));
 			}
+      
 		}
 
 		// check hats
@@ -316,21 +319,22 @@ u32 PERSDLJoyScan( u32 flags ) {
 			}
 		}
 
-		//if (flags & PERSF_BUTTON)
-		//{
+		if (flags & PERSF_BUTTON)
+		{
 			// check buttons
 			for ( i = 0; i < SDL_JoystickNumButtons( joy ); i++ )
 			{
 				if ( SDL_JoystickGetButton( joy, i ) == SDL_BUTTON_PRESSED )
 				{
+          printf("PERSDLJoyScan: %d - down.", (i+1));
 					return (joyId << 18) | (i +1);
 					break;
 				}
 			}
-		//}
+		}
 
-		//if (flags & PERSF_HAT)
-		//{
+		if (flags & PERSF_HAT)
+		{
 			// check hats
 			for ( i = 0; i < SDL_JoystickNumHats( joy ); i++ )
 			{
@@ -341,13 +345,14 @@ u32 PERSDLJoyScan( u32 flags ) {
 					case SDL_HAT_RIGHT:
 					case SDL_HAT_DOWN:
 					case SDL_HAT_LEFT:
+            printf("PERSDLJoyScan: hat %d - down.", (i));
 						return (joyId << 18) | SDL_HAT_VALUE | (hatState << 4) | i;
 						break;
 					default:
 						break;
 				}
 			}
-		//}
+		}
 	}
 
 	return 0;
