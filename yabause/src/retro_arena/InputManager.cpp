@@ -863,20 +863,20 @@ int InputManager::handleJoyEvents(void) {
       if( _analogType[joyId] == 1 ){ 
         PerAxisValue((joyId << 18) | SDL_MEDIUM_AXIS_VALUE | i, (u8)(((int)cur+32768) >> 8));
       }else{
-	PerAxisValue((joyId << 18) | SDL_MEDIUM_AXIS_VALUE | i, (u8)(((int)cur+32768) >> 8)-128 );
+	       PerAxisValue((joyId << 18) | SDL_MEDIUM_AXIS_VALUE | i, (u8)(((int)cur+32768) >> 8)-128 );
       }
 
       if ( cur < -SDL_MEDIUM_AXIS_VALUE )
       {
         PerKeyUp( (joyId << 18) | SDL_MAX_AXIS_VALUE | i );
         PerKeyDown( (joyId << 18) | SDL_MIN_AXIS_VALUE | i );
-        //printf("PerAxisValue %d, %d\n",i,((u8)(((int)cur+32768) >> 8)));
+        printf("PerAxisValue %d, %d\n",i,((u8)(((int)cur+32768) >> 8)));
       }
       else if ( cur > SDL_MEDIUM_AXIS_VALUE )
       {
         PerKeyUp( (joyId << 18) | SDL_MIN_AXIS_VALUE | i );
         PerKeyDown( (joyId << 18) | SDL_MAX_AXIS_VALUE | i );
-        //printf("PerAxisValue %d, %d\n",i,((u8)(((int)cur+32768) >> 8)));
+        printf("PerAxisValue %d, %d\n",i,((u8)(((int)cur+32768) >> 8)));
       }
       else
       {
@@ -894,12 +894,12 @@ int InputManager::handleJoyEvents(void) {
       if ( buttonState == SDL_BUTTON_PRESSED )
       {
         PerKeyDown( (joyId << 18) | (i) );
-        //printf("SDL_BUTTON_PRESSED %d",(i));
+        printf("SDL_BUTTON_PRESSED %d",(i));
       }
       else if ( buttonState == SDL_BUTTON_RELEASED )
       {
         PerKeyUp( (joyId << 18) | (i) );
-        //printf("SDL_BUTTON_RELEASED %d\n",(i +1));
+        printf("SDL_BUTTON_RELEASED %d\n",(i +1));
       }
     }
 
@@ -914,6 +914,7 @@ int InputManager::handleJoyEvents(void) {
         hatValue = SDL_HAT_VALUES[ j ];
         if ( oldHatState & hatValue && ~newHatState & hatValue )
         {
+          printf("HAT UP %d \n", hatValue);
           PerKeyUp( (joyId << 18) | SDL_HAT_VALUE | (hatValue << 4) | i );
         }
       }
@@ -922,7 +923,7 @@ int InputManager::handleJoyEvents(void) {
         hatValue = SDL_HAT_VALUES[ j ];
         if ( ~oldHatState & hatValue && newHatState & hatValue )
         {
-          //printf("HAT %d \n", hatValue);
+          printf("HAT DOWN %d \n", hatValue);
           PerKeyDown( (joyId << 18) | SDL_HAT_VALUE | (hatValue << 4) | i);
         }
       }
